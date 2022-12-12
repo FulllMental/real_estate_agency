@@ -48,7 +48,7 @@ class Flat(models.Model):
         blank=True,
         db_index=True)
 
-    new_building = models.BooleanField(null=True)
+    new_building = models.BooleanField(null=True, db_index=True)
     liked_by = models.ManyToManyField(User,
                                       blank=True,
                                       verbose_name='Кто лайкнул',
@@ -80,5 +80,6 @@ class Owner(models.Model):
                                         region='RU',
                                         verbose_name='Нормализованный номер владельца')
     flat = models.ManyToManyField(Flat,
+                                  blank=True,
                                   verbose_name='Квартиры владельца',
-                                  related_name='owners_flats')
+                                  related_name='flats')
