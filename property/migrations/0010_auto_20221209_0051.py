@@ -6,7 +6,8 @@ from django.db import migrations
 def clear_phonenumbers(apps, schema_editor):
     Flat = apps.get_model('property', 'Flat')
     Owner = apps.get_model('property', 'Owner')
-    for flat in Flat.objects.all():
+    flats = Flat.objects.all().iterator()
+    for flat in flats:
         Owner.objects.get_or_create(owner=flat.owner,
                                     owners_phonenumber=flat.owners_phonenumber,
                                     owner_pure_phone=flat.owner_pure_phone)
