@@ -11,8 +11,7 @@ class PropertyInline(admin.TabularInline):
 @admin.register(Flat)
 class FlatAdmin(admin.ModelAdmin):
     search_fields = ['town',
-                     'address',
-                     'owner']
+                     'address']
     readonly_fields = ['created_at']
     list_display = ['address',
                     'price',
